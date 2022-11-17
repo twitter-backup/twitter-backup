@@ -13,6 +13,10 @@ SLEEP_TIME_IN_SECONDS=50
 #     | jq '.[] | [.url][0] ' \
 #     | sed -e's,"https://api.github.com/repos/,,' -e's,",,' > twitter_repos.txt
 
+# gh api orgs/twitter/repos --paginate \ 
+#     | jq '.[] | [.url][0] ' \
+#     | sed -e's,"https://api.github.com/repos/,,' -e's,",,' 2>&1 | tee twitter_repos.txt
+
 echo "==> starting forking"
 
 cat twitter_repos.txt | while read repo; do
